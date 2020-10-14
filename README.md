@@ -12,7 +12,14 @@ $ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 $ helm install --generate-name ingress-nginx/ingress-nginx
 ```
 
-3. Point a domain name at your ingress-nginx NodeBalancer
+3. Add an A record using your DNS provider for the service.
+
+```text
+type  name        data         ttl
+A     mybackend   <public-ip>  300 sec
+```
+
+* `<public-ip>` comes from the `EXTERNAL-IP` for ingress-nginx seen with `kubectl get services -A`
 
 ```bash
 $ kubectl get services -A
@@ -21,24 +28,15 @@ default       ingress-nginx-1602681250-controller             LoadBalancer   10.
 ...
 ```
 
-Add an A record using your DNS provider for the service.
-
-Your edits at this step:
-
-* `<public-ip>` comes from the `EXTERNAL-IP` above
 * `mybackend` is a name that you choose for the service
 * Choose a short TTL, so that we can interact with this domain in a few minutes
 
-```text
-type  name        data         ttl
-A     mybackend   <public-ip>  300 sec
-```
 
 This will soon allow us to reach our service at mybackend.mydomain.com
 
 4. Deploy a backend Service with an Ingress resource
 
-The following is an example backend service manifest using an ingress for that domain name. We will use `httpbin` which can echo to us our client IP address when we make a request.
+We will use `httpbin` as a demo backend service which by default echoes to us our client IP address when we make a request.
 
 Your edits at this step:
 
