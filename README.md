@@ -8,7 +8,7 @@ $ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 $ helm install my-release ingress-nginx/ingress-nginx
 ```
 
-2. Point a wildcard domain name at your ingress-nginx NodeBalancer
+2. Point a domain name at your ingress-nginx NodeBalancer
 
 ```
 $ kubectl get services -A
