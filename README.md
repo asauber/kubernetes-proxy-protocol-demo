@@ -26,8 +26,8 @@ Your edits at this step:
 * `mybackend` is a name that you choose for the service
 
 ```
-type  name       data         ttl
-A     mybackend. <public-ip>  300 sec
+type  name        data         ttl
+A     mybackend   <public-ip>  300 sec
 ```
 
 This will soon allow us to reach our service at mybackend.mydomain.com
