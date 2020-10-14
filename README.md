@@ -146,7 +146,7 @@ $ kubectl logs ingress-nginx-1602681250-controller-8df8684fc-5xbmd
 
 The name of the ingress-nginx pod can be found with `kubectl get pods -A`.
 
-These broken header messages indicate that the in-cluster client is not sending Proxy Protocol data to ingress-nginx, which now exepcts it.
+These `broken header: ` messages indicate that the in-cluster client is not sending Proxy Protocol data to ingress-nginx, which now exepcts it.
 
 7. Fix this problem by using the service hostname instead of the public hostname.
 
