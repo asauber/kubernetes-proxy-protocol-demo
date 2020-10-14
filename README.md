@@ -153,7 +153,6 @@ These `broken header: ` messages indicate that the in-cluster client is not send
 Instead of using the Ingress hostname, clients which are inside your cluster should use the Service hostname for the backend service. This bypasses ingress-nginx entirely, avoiding the need for the client to send Proxy Protocol headers.
 
 ```
-$ kubectl delete pod myshell
 $ kubectl run myshell --image busybox --command sleep 10000
 $ kubectl exec -ti myshell -- sh
 / # wget http://mybackend-service.default.svc.cluster.local/get
