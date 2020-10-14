@@ -1,6 +1,6 @@
 ## Ingress + Proxy Protocol Demo with In-Cluster Services on Linode
 
-1. Create a Kubernetes cluster with Linode Kubernetes Engine and downlod the Kubeconfig
+1. Create a Kubernetes cluster with Linode Kubernetes Engine and download the Kubeconfig
 
 https://cloud.linode.com/kubernetes/create
 
@@ -146,7 +146,7 @@ $ kubectl logs ingress-nginx-1602681250-controller-8df8684fc-5xbmd
 
 The name of the ingress-nginx pod can be found with `kubectl get pods -A`.
 
-These `broken header: ` messages indicate that the in-cluster client is not sending Proxy Protocol data to ingress-nginx, which now exepcts it.
+These `broken header: ` messages indicate that the in-cluster client is not sending Proxy Protocol data to ingress-nginx, which now expects it.
 
 7. Fix this problem by using the service hostname instead of the public hostname.
 
@@ -178,4 +178,4 @@ At this point you are able to reach the backend from both public and private cli
 * Publicly via http://mybackend.mydomain.com/
 * Inside the cluster via http://mybackend-service.mybackend-namespace.svc.cluster.local/
 
-Service hostnames should always be the preferred way to reach sevices inside a Kubernetes cluster. This is service discovery inside Kubernetes.
+Service hostnames should always be the preferred way to reach services inside a Kubernetes cluster. This is the mechanism for service discovery in Kubernetes.
