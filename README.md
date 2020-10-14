@@ -26,8 +26,11 @@ Your edits at this step:
 * `mybackend` is a name that you choose for the service
 
 ```
-A mybackend.mydomain.com <public-ip> ttl 300 seconds
+type  name       data         ttl
+A     mybackend. <public-ip>  300 sec
 ```
+
+This will soon allow us to reach our service at mybackend.mydomain.com
 
 3. Deploy a backend Service with an Ingress resource
 
