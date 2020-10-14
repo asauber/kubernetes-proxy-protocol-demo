@@ -157,6 +157,16 @@ $ kubectl run myshell --image busybox --command sleep 10000
 $ kubectl exec -ti myshell -- sh
 / # wget http://mybackend-service.default.svc.cluster.local/get
 / # cat get
+{
+  "args": {},
+  "headers": {
+    "Connection": "close",
+    "Host": "mybackend-service.default.svc.cluster.local",
+    "User-Agent": "Wget"
+  },
+  "origin": "10.2.1.9",
+  "url": "http://mybackend-service.default.svc.cluster.local/get"
+}
 ```
 
 You will see that in this case the request succeeded and that your "origin" is your Pod IP (the Pod IP of this busybox Pod) inside the cluster!
