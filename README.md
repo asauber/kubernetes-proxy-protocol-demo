@@ -22,8 +22,8 @@ Add an A record using your DNS provider for the service.
 Your edits at this step:
 
 * `<public-ip>` comes from the `EXTERNAL-IP` above
-* `mydomain.com` is a domain name for which you can add A records
 * `mybackend` is a name that you choose for the service
+* Choose a short TTL, so that we can interact with this domain in a few minutes
 
 ```
 type  name        data         ttl
