@@ -17,7 +17,13 @@ default       ingress-nginx-1602681250-controller             LoadBalancer   10.
 ...
 ```
 
-Add an A record using your DNS provider for the service
+Add an A record using your DNS provider for the service.
+
+Your edits at this step:
+
+* <public-ip> comes from the `EXTERNAL-IP` above
+* mydomain.com is a domain name under your control
+* mybackend is a name that you choose for the service
 
 ```
 mybackend.mydomain.com <public-ip>
@@ -26,6 +32,11 @@ mybackend.mydomain.com <public-ip>
 3. Deploy a backend Service with an Ingress resource
 
 The following is an example backend service manifest using an ingress for that domain name. We will use `httpbin` which can echo to us our client IP address when we make a request.
+
+Your edits at this step:
+
+* Set `host:` in the Ingress resource to the domain name that you chose above
+* No other edits should be made to this manifest
 
 ```
 # mybackend.yaml
