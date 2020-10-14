@@ -165,7 +165,7 @@ The name of the ingress-nginx pod can be found with `kubectl get pods -A`.
 
 These `broken header: ` messages indicate that the in-cluster client is not sending Proxy Protocol data to ingress-nginx, which now expects it.
 
-7. Fix this problem by using the service hostname instead of the public hostname.
+7. Fix this problem by using the Service hostname instead of the public hostname.
 
 Instead of using the Ingress hostname, clients which are inside your cluster should use the Service hostname for the backend service. This bypasses ingress-nginx entirely, avoiding the need for the client to send Proxy Protocol headers.
 
