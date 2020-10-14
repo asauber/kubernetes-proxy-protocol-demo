@@ -108,7 +108,7 @@ This is an httpbin endpoint which displays request information, including the cl
 
 We now want our backend service to see the true client IP, so we enable Proxy Protocol for ingress-nginx.
 
-Add the Proxy Protocol annotation
+Add the Proxy Protocol annotation to the ingress-nginx service. The name of the service is obtained with `kubectl get services -A`.
 
 ```bash
 $ k edit service ingress-nginx-1602681250-controller
@@ -145,6 +145,8 @@ $ kubectl logs ingress-nginx-1602681250-controller-8df8684fc-5xbmd
 2020/10/14 14:14:37 [error] 187#187: *11787 broken header:
 ...
 ```
+
+The name of the ingress-nginx pod can be found with `kubectl get pods -A`.
 
 These broken header messages indicate that the in-cluster client is not sending Proxy Protocol data to ingress-nginx, which now exepcts it.
 
