@@ -131,7 +131,7 @@ You will see your own machine's IP in the "origin" section of httpbin's info. Pr
 
 6. Note that at this point in-cluster clients cannot reach the service via the public hostname.
 
-```bash
+```
 $ kubectl run myshell --image busybox --command sleep 10000
 $ kubectl exec -ti myshell -- sh
 / # wget http://mybackend.mydomain.com/get
@@ -152,7 +152,7 @@ These broken header messages indicate that the in-cluster client is not sending 
 
 Instead of using the Ingress hostname, clients which are inside your cluster should use the Service hostname for the backend service. This bypasses ingress-nginx entirely, avoiding the need for the client to send Proxy Protocol headers.
 
-```bash
+```
 $ kubectl delete pod myshell
 $ kubectl run myshell --image busybox --command sleep 10000
 $ kubectl exec -ti myshell -- sh
