@@ -116,7 +116,7 @@ $ kubectl edit service ingress-nginx-1602681250-controller
     service.beta.kubernetes.io/linode-loadbalancer-proxy-protocol: v2
 ```
 
-Configure ingress-nginx to expect Proxy Protocol data
+Configure ingress-nginx to expect Proxy Protocol data. The name of this configmap can be found with `kubectl get configmaps -A`.
 
 ```bash
 $ kubectl edit configmap ingress-nginx-1602681250-controller
