@@ -157,13 +157,15 @@ $ kubectl run myshell --image busybox --command sleep 10000
 $ kubectl exec -ti myshell -- sh
 / # wget http://mybackend-service.default.svc.cluster.local/get
 / # cat get
-# You will see that request succeeded and that your "origin" is your Pod IP
-# inside the cluster!
 ```
 
-Here `svc.cluster.local` is the default domain name for the Service network in Kubernetes, you should be able to use that portion of the hostname without any modifications. Similarly, `default` is the name of the `default` namespace in Kubernetes, if your backend resides in a different namespace, then you can substitute that namespace name in this URL.
+You will see that in this case the request succeeded and that your "origin" is your Pod IP (the Pod IP of this busybox Pod) inside the cluster!
+
+Here `svc.cluster.local` is the default domain name for the Service network in Kubernetes, you should be able to use that portion of the hostname without any modifications. Similarly, `default` is the name of the `default` namespace in Kubernetes, if your backend resides in a different namespace, then you can substitute that namespace name in this URL. The DNS records for this hostname are queried automatically via CoreDNS running in this cluster.
 
 At this point you are able to reach the backend from both public and private clients:
 
 * Publicly via http://mybackend.mydomain.com/
 * Inside the cluster via http://mybackend-service.mybackend-namespace.svc.cluster.local/
+
+Service hostnames should always be the preferred way to reach sevices inside a Kubernetes cluster. This is service discovery inside Kubernetes.
