@@ -44,6 +44,11 @@ Your edits at this step:
 ```
 # mybackend.yaml
 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mybackend-namespace
+---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
