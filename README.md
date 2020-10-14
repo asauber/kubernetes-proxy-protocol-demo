@@ -5,7 +5,7 @@
 ```
 $ export KUBECONFIG=my-cluster-kubeconfig.yaml
 $ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-$ helm install my-release ingress-nginx/ingress-nginx
+$ helm install --generate-name ingress-nginx/ingress-nginx
 ```
 
 2. Point a domain name at your ingress-nginx NodeBalancer
