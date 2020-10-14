@@ -28,6 +28,8 @@ mybackend.mydomain.com <public-ip>
 The following is an example backend service manifest using an ingress for that domain name. We will use `httpbin` which can echo to us our client IP address when we make a request.
 
 ```
+# mybackend.yaml
+
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
@@ -77,6 +79,10 @@ spec:
           image: kennethreitz/httpbin
           ports:
             - containerPort: 80
+```
+
+```
+kubectl apply -f mybackend.yaml
 ```
 
 Hit http://mybackend.mydomain.com/get in a local web browser.
