@@ -109,7 +109,7 @@ We now want our backend service to see the true client IP, so we enable Proxy Pr
 Add the Proxy Protocol annotation to the ingress-nginx service. The name of the service is obtained with `kubectl get services -A`.
 
 ```bash
-$ k edit service ingress-nginx-1602681250-controller
+$ kubectl edit service ingress-nginx-1602681250-controller
   # Add the Proxy Protocol annotation to the annotations section
   annotations:
     ...
@@ -119,7 +119,7 @@ $ k edit service ingress-nginx-1602681250-controller
 Configure ingress-nginx to expect Proxy Protocol data
 
 ```bash
-$ k edit configmap ingress-nginx-1602681250-controller
+$ kubectl edit configmap ingress-nginx-1602681250-controller
 # Add the data section at the root level of this yaml, which might not yet exist
 data:
   use-proxy-protocol: "true"
