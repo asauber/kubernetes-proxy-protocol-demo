@@ -101,7 +101,7 @@ kubectl apply -f mybackend.yaml
 
 Hit http://mybackend.mydomain.com/get in a local web browser.
 
-This is an httpbin endpoint which displays request information, including the client IP and all HTTP headers. Note that the client IP, will be in the Kubernetes Pod network of 10.2.0.0/16. This is the address of ingress-nginx reaching the backend.
+This is an httpbin endpoint which displays request information, including the client IP and all HTTP headers. Note that the client IP, called "origin", will be in the Kubernetes Pod network of 10.2.0.0/16. This is the address of ingress-nginx reaching the backend.
 
 4. Enable Proxy Protocol for ingress-nginx
 
