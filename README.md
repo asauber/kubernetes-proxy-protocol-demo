@@ -21,9 +21,9 @@ Add an A record using your DNS provider for the service.
 
 Your edits at this step:
 
-* <public-ip> comes from the `EXTERNAL-IP` above
-* mydomain.com is a domain name under your control
-* mybackend is a name that you choose for the service
+* `<public-ip>` comes from the `EXTERNAL-IP` above
+* `mydomain.com` is a domain name under your control
+* `mybackend` is a name that you choose for the service
 
 ```
 mybackend.mydomain.com <public-ip>
@@ -35,7 +35,7 @@ The following is an example backend service manifest using an ingress for that d
 
 Your edits at this step:
 
-* Set `host:` in the Ingress resource to the domain name that you chose above
+* Set the value of `host:` in the Ingress resource to the domain name that you chose above
 * No other edits should be made to this manifest
 
 ```
