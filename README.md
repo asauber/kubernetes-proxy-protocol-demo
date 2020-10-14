@@ -12,11 +12,11 @@ $ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 $ helm install --generate-name ingress-nginx/ingress-nginx
 ```
 
-3. Add an A record using your DNS provider for the service.
+3. Add an A record for our demo using your DNS provider.
 
 ```text
-type  name        data         ttl
-A     mybackend   <public-ip>  300 sec
+type  name       data         ttl
+A     mybackend  <public-ip>  300 sec
 ```
 
 * `<public-ip>` comes from the `EXTERNAL-IP` for ingress-nginx seen with `kubectl get services -A`
