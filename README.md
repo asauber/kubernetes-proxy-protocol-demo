@@ -25,7 +25,7 @@ mybackend.mydomain.com <public-ip>
 
 3. Deploy a backend Service with an Ingress resource
 
-An example backend service manifest. We will use `httpbin` which can echo to us our client IP address when we make a request.
+The following is an example backend service manifest using an ingress for that domain name. We will use `httpbin` which can echo to us our client IP address when we make a request.
 
 ```
 apiVersion: networking.k8s.io/v1beta1
