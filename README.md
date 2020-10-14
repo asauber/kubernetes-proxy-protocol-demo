@@ -22,11 +22,11 @@ Add an A record using your DNS provider for the service.
 Your edits at this step:
 
 * `<public-ip>` comes from the `EXTERNAL-IP` above
-* `mydomain.com` is a domain name under your control
+* `mydomain.com` is a domain name for which you can add A records
 * `mybackend` is a name that you choose for the service
 
 ```
-mybackend.mydomain.com <public-ip>
+A mybackend.mydomain.com <public-ip> ttl 300 seconds
 ```
 
 3. Deploy a backend Service with an Ingress resource
