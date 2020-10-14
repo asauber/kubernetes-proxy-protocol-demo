@@ -129,6 +129,23 @@ Hit http://mybackend.mydomain.com/get again in a web browser.
 
 You will see your own machine's IP in the "origin" section of httpbin's info. Proxy Protocol successfully enabled!
 
+```
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Accept-Language": "en-US,en;q=0.9,ja;q=0.8", 
+    "Host": "mybackend.mydomain.com", 
+    "Upgrade-Insecure-Requests": "1", 
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36", 
+    "X-Forwarded-Host": "mybackend.mydomain.com", 
+    "X-Scheme": "http"
+  }, 
+  "origin": "68.68.68.68", 
+  "url": "http://mybackend.mydomain.com/get"
+}
+```
 6. Note that at this point in-cluster clients cannot reach the service via the public hostname.
 
 ```
@@ -169,7 +186,7 @@ $ kubectl exec -ti myshell -- sh
 }
 ```
 
-You will see that in this case the request succeeded and that your "origin" is your Pod IP (the Pod IP of this busybox Pod) inside the cluster!
+You will see that in this case the request succeeded and that your "origin" is your Pod IP (the Pod IP of this busybox Pod) inside the cluster.
 
 Here `svc.cluster.local` is the default domain name for the Service network in Kubernetes, you should be able to use that portion of the hostname without any modifications. Similarly, `default` is the name of the `default` namespace in Kubernetes, if your backend resides in a different namespace, then you can substitute that namespace name in this URL. The DNS records for this hostname are queried automatically via CoreDNS running in this cluster.
 
@@ -178,4 +195,4 @@ At this point you are able to reach the backend from both public and private cli
 * Publicly via http://mybackend.mydomain.com/
 * Inside the cluster via http://mybackend-service.mybackend-namespace.svc.cluster.local/
 
-Service hostnames should always be the preferred way to reach services inside a Kubernetes cluster. This is the mechanism for service discovery in Kubernetes.
+Service hostnames should always be the preferred way to reach Services inside a Kubernetes cluster. This is the mechanism for service discovery in Kubernetes.
