@@ -44,15 +44,9 @@ Your edits at this step:
 ```
 # mybackend.yaml
 
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: mybackend-namespace
----
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  namespace: mybackend-namespace
   name: mybackend-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
@@ -69,7 +63,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: mybackend-namespace
   name: mybackend-service
 spec:
   selector:
@@ -81,7 +74,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: mybackend-namespace
   name: mybackend-deployment
 spec:
   replicas: 3
@@ -160,13 +152,13 @@ Instead of using the Ingress hostname, clients which are inside your cluster sho
 $ kubectl delete pod myshell
 $ kubectl run myshell --image busybox --command sleep 10000
 $ kubectl exec -ti myshell -- sh
-/ # wget http://mybackend-service.mybackend-namespace.svc.cluster.local/get
+/ # wget http://mybackend-service.default.svc.cluster.local/get
 / # cat get
 # You will see that request succeeded and that your "origin" is your Pod IP
 # inside the cluster!
 ```
 
-Here `svc.cluster.local` is the default domain name for the Service network in Kubernetes, you should be able to use that portion of the hostname without any modifications.
+Here `svc.cluster.local` is the default domain name for the Service network in Kubernetes, you should be able to use that portion of the hostname without any modifications. Similarly, `default` is the name of the `default` namespace in Kubernetes, if your backend resides in a different namespace, then you can substitute that namespace name in this URL.
 
 At this point you are able to reach the backend from both public and private clients:
 
